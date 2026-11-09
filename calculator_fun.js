@@ -66,18 +66,6 @@ function parseCalculation(calculation) {
     }
 }
 
-function eventHandler(event) { // handle instruction button animation
-    if (event === "mouseover") {
-        instructionButton.style["animation-duration"] = "2s";
-    } else if (event === "mouseleave") {
-        instructionButton.style["animation-duration"] = "5s";
-    } else if (event === "click") {
-        instruction.style.display = "flex"; 
-        instructionButton.style["animation-play-state"] = "paused";
-        instructionButton.style.animation = "none"
-    }
-}
-
 buttons.forEach(button => button.addEventListener("click", (event) => {
     calc.style.color = "white";
     if (event.target.id === "=") {
