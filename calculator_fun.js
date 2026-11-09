@@ -45,7 +45,11 @@ function parseCalculation(calculation) {
             } else if (element === "*") {
                 result = mulitpy(num1, num2);
             } else if (element === "/") {
-                result = divide(num1, num2);
+                if (num2 === 0) {
+                    result = "ERROR";
+                } else {
+                    result = divide(num1, num2);
+                }
             }
             numbersArray.push(result)
         }
@@ -118,6 +122,19 @@ buttons.forEach(button => button.addEventListener("click", (event) => {
         calc.textContent = calculationLine;
     }
 }))
+
+function eventHandler(event) { // handle instruction button animation
+    if (event === "mouseover") {
+        instructionButton.style["animation-duration"] = "2s";
+    } else if (event === "mouseleave") {
+        instructionButton.style["animation-duration"] = "5s";
+    } else if (event === "click") {
+        instruction.style.display = "flex"; 
+        instructionButton.style["animation-play-state"] = "paused";
+        instructionButton.style.animation = "none"
+    }
+}
+
 
 ["mouseover", "mouseleave", "click"].forEach(event => instructionButton.addEventListener(event, () => eventHandler(event))); // handle each event
 
