@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "Black Ops One";
+    src: url("Black_Ops_One/BlackOpsOne-Regular.ttf")
+}
+
+:root {
+    --number-color: #3A5E5A;
+    --operations-color: #324e4b;
+    --background: #2C403E;
+    --hover: #447771;
+    --contrast: #402C2E;
+    --clicked: 5px solid #4b8f87;
+}
+
+
+body {
+    background-color: wheat;
+}
+
+#calculator-box {
+    position: relative;
+    width: 650px;
+    height: 650px;
+    margin: 10% auto;
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    box-shadow: 10px 10px 20px 10px var(--operations-color);
+    border-radius: 20px;
+}
+
+#screen {
+    position: absolute;
+    display: flex;
+    top: 0;
+    width: 95%;
+    height: calc(25% - 50px);
+    margin-top: 20px;
+    background-color: var(--hover);
+    border-radius: 50px;
+    justify-content: flex-end;
+    box-shadow: -5px -5px var(--operations-color);
+
+}
+
+#buttons-container {
+    position: absolute;
+    display: grid;
+    height: 75%;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 4fr;
+    bottom: 0;
+    justify-items: center;
+    row-gap: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    
+}
+
+#space {
+    width: calc(100% - 20px);
+    height: 100%;
+    grid-row: 6;
+    grid-column: 1 / -1;
+    display: flex;
+    margin: 10px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    font-family: "Black Ops One";
+    background-color: var(--number-color);
+}
+
+.numbers, .operations, #CE {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: "Black Ops One";
+    border-radius: 50px;
+    width: 130px;
+    height: 70px;
+    color: white;
+}
+
+.numbers {
+    background-color: var(--number-color);
+}
+
+.operations {
+    background-color: var(--operations-color);
+}
+
+#CE {
+    background-color: #9d213c;
+}
+
+.numbers:hover, .operations:hover, #space:hover, #CE:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+}
+
+.numbers:active {
+    border: var(--clicked)
+}
+
+#calculation {
+    display: flex;
+    flex-direction: row;
+    font-size: 3rem;
+    color: white;
+    align-items: center;
+    margin-right: 10px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#joke {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh
+}
+
+.separator {
+    position: absolute;
+    border-width: 5px;
+    border-style: double none none none;
+    border-color: var(--number-color);
+    width: 100%;
+    height: 0;
+    top: 150px;
+}
+
+#instruction-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(122, 153, 107, 0.7);
+    z-index: 100;
+}
+
+#instruction-value {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    border: 2px solid red;
+    margin: auto;
+}
+
+#leave-instruction {
+    position: absolute;
+    color: red;
+    border: 2px solid var(--contrast);
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor:pointer;
+}
+
+#show-instruction {
+    position: relative;
+    font-size: 2rem;
+    top: 30px;
+    left: 30px;
+    padding: 7px 10px;
+    background-color: var(--contrast);
+    color: white;
+    border-radius: 50px;
+    border: 2px solid white;
+    animation-name: rotating;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+}
+
+#show-instruction:hover {
+    background-color: var(--hover);
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+    25% {
+        transform: rotate(5deg) scale(1.2);
+    } 
+    50% {
+        transform: rotate(-5deg) scale(1);
+    }
+    75% {
+        transform: rotate(5deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(0) scale(1)
+    }
+}
