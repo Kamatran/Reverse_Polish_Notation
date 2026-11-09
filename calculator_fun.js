@@ -37,6 +37,9 @@ function parseCalculation(calculation) {
         } else { // element is an operation
             let num2 = parseFloat(numbersArray.pop());
             let num1 = parseFloat(numbersArray.pop());
+            if (isNaN(num1) || isNaN(num2)) {
+                return "ERROR" // to many operations and to little numbers
+            }
 
             if (element === "+") {
                  result = sum(num1, num2);
@@ -107,6 +110,9 @@ buttons.forEach(button => button.addEventListener("click", (event) => {
     } else if (event.target.id === "CE") {
         if (calculationLine) { // if there is calculation
             calculationLine = calculationLine.slice(0, calculationLine.length-1); // delete last element
+            calc.textContent = calculationLine;
+        } else {
+            calculationLine = "";
             calc.textContent = calculationLine;
         }
     } else if (event.target.id === "del") {
