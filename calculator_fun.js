@@ -13,7 +13,7 @@ const instruction = document.getElementById("instruction-container") // instruct
 const operations = "+-/*%"
 
 function parseCalculation(calculation) {
-    mulitpy = (num1, num2) => num1 * num2
+    multiply = (num1, num2) => num1 * num2
     sum = (num1, num2) => num1 + num2
     difference = (num1, num2) => num1 - num2
     divide = (num1, num2) => num1 / num2
@@ -46,7 +46,7 @@ function parseCalculation(calculation) {
             } else if (element === "-") {
                 result = difference(num1, num2);
             } else if (element === "*") {
-                result = mulitpy(num1, num2);
+                result = multiply(num1, num2);
             } else if (element === "/") {
                 if (num2 === 0) {
                     result = "ERROR";
@@ -128,7 +128,6 @@ function eventHandler(event) { // handle instruction button animation
         instructionButton.style.animation = "none"
     }
 }
-
 
 ["mouseover", "mouseleave", "click"].forEach(event => instructionButton.addEventListener(event, () => eventHandler(event))); // handle each event
 

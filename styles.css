@@ -20,52 +20,66 @@
 
 body {
     background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 #calculator-box {
     position: relative;
+    /*
     width: 650px;
     height: 650px;
-    margin: 10% auto;
+    */
+    width: 80%;
+    max-width: 650px;
+    max-height: 800px;
+    margin: auto;
     background-color: var(--background);
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     box-shadow: 10px 10px 20px 10px var(--operations-color);
     border-radius: 20px;
+    padding-bottom: 10px;
 }
 
 #screen {
-    position: absolute;
+    position: relative;
     display: flex;
-    top: 0;
     width: 95%;
-    height: calc(25% - 50px);
-    margin-top: 20px;
+    aspect-ratio: 6 / 1;
     background-color: var(--hover);
     border-radius: 50px;
     justify-content: flex-end;
-    box-shadow: -5px -5px var(--operations-color);
+    margin-top: 20px;
+    box-shadow: inset 5px 5px 5px var(--operations-color);
 
 }
 
 #buttons-container {
-    position: absolute;
+    position: relative;
     display: grid;
-    height: 75%;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 4fr;
-    bottom: 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, auto);
     justify-items: center;
     row-gap: 5px;
+    column-gap: 10px;
     padding: 10px;
-    margin-bottom: 10px;
-    
+    margin-top: 20px;
+    padding-top: 5%;
 }
 
 #space {
     width: calc(100% - 20px);
+    /*
     height: 100%;
+    */
+    height: 50px;
     grid-row: 6;
     grid-column: 1 / -1;
     display: flex;
@@ -73,7 +87,7 @@ body {
     border-radius: 50px;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: clamp(1rem, 4vw, 2rem);
     color: white;
     font-family: "Black Ops One";
     background-color: var(--number-color);
@@ -83,12 +97,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: clamp(1rem, 4vw, 2rem);
     font-family: "Black Ops One";
     border-radius: 50px;
+    /*
     width: 130px;
     height: 70px;
+    */
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 5 / 3;
     color: white;
+    flex-basis: auto;
+
 }
 
 .numbers {
@@ -115,7 +136,7 @@ body {
 #calculation {
     display: flex;
     flex-direction: row;
-    font-size: 3rem;
+    font-size: clamp(1rem, 4vw, 3rem);
     color: white;
     align-items: center;
     margin-right: 10px;
@@ -133,13 +154,14 @@ body {
 }
 
 .separator {
-    position: absolute;
+    position: relative;
     border-width: 5px;
     border-style: double none none none;
     border-color: var(--number-color);
     width: 100%;
     height: 0;
-    top: 150px;
+    top: 30px;
+    margin-bottom: 20px;
 }
 
 #instruction-container{
@@ -172,7 +194,7 @@ body {
 }
 
 #show-instruction {
-    position: relative;
+    position: absolute;
     font-size: 2rem;
     top: 30px;
     left: 30px;
