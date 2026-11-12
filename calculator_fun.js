@@ -68,9 +68,10 @@ function parseCalculation(calculation) {
     }
 }
 
-buttons.forEach(button => button.addEventListener("click", (event) => {
+
+function whichPressed(input) {
     calc.style.color = "white";
-    if (event.target.id === "=") {
+    if (input === "=" || input === "Enter") {
         let calcResult = parseCalculation(calculationLine);
         calc.textContent = calcResult;
 
@@ -97,7 +98,7 @@ buttons.forEach(button => button.addEventListener("click", (event) => {
 
             setTimeout(() => instructionButton.style["animation-play-state"] = "paused", 10000) // pause animation after 10s
         }
-    } else if (event.target.id === "CE") {
+    } else if (input === "CE" || input === "Backspace") {
         if (calculationLine) { // if there is calculation
             calculationLine = calculationLine.slice(0, calculationLine.length-1); // delete last element
             calc.textContent = calculationLine;
@@ -105,19 +106,33 @@ buttons.forEach(button => button.addEventListener("click", (event) => {
             calculationLine = "";
             calc.textContent = calculationLine;
         }
-    } else if (event.target.id === "del") {
+    } else if (input === "del" || input === "Delete") {
         calculationLine = ""; // reset calculation
         calc.textContent = calculationLine;
-    } else if (event.target.id === "space") {
+    } else if (input === "space" || input === " ") {
         if (calculationLine[calculationLine.length-1] !== " ") { // if there isn't a space already at the end
             calculationLine += " ";
             calc.textContent = calculationLine;
         }
     } else {
-        calculationLine += event.target.id;
+        calculationLine += input;
         calc.textContent = calculationLine;
     }
+}
+
+buttons.forEach(button => button.addEventListener("click", (event) => {
+    let pressed = event.target.id;
+    whichPressed(pressed);
 }))
+
+document.addEventListener("keydown", (event) => {
+    let pressed = event.key;
+    if (!["1","2","3","4","5","6","7","8","9","0","Backspace","Delete","Enter",".","/","*","+","-","%","="," "].includes(pressed)) {
+        return;
+    }
+    event.preventDefault();
+    whichPressed(pressed);
+})
 
 function eventHandler(event) { // handle instruction button animation
     if (event === "mouseover") {
