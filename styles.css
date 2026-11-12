@@ -204,6 +204,15 @@ h3 {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.example {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    row-gap: 10px;
+}
+
 p:has(+ .example) {
     text-align: center;
     text-shadow: 2px 2px 10px #2C403E;
@@ -231,11 +240,12 @@ ul {
     flex-direction: column;
     padding: 20px 40px;
     text-align: left;
-    margin: 0 30px;
+    margin: 0 auto;
     box-shadow: inset 0 0 10px 5px var(--contrast-background);
     background-color: var(--contrast-light);
     border-radius: 40px;
     transition: transform 1s;
+    width: fit-content;
 }
 
 ul:hover {
@@ -271,7 +281,7 @@ li::before {
 
 .classic, .solution, .arrow{
     display: flex;
-    width: 180px;
+    width: auto;
     height: 40px;
     justify-content: center;
     align-items: center;
@@ -280,6 +290,7 @@ li::before {
 
 .classic, .solution {
     border: 4px double var(--contrast);
+    min-width: 160px;
 }
 
 .solution {
@@ -289,6 +300,7 @@ li::before {
 
 .arrow {
     font-size: 2.5rem;
+    min-width: 50px;
 }
 
 #leave-instruction {
