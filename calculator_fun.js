@@ -37,8 +37,8 @@ function parseCalculation(calculation) {
         } else { // element is an operation
             let num2 = parseFloat(numbersArray.pop());
             let num1 = parseFloat(numbersArray.pop());
-            if (isNaN(num1) || isNaN(num2)) {
-                return "ERROR" // to many operations and to little numbers
+            if ((isNaN(num1) || isNaN(num2)) && element !== "%") {
+                return "ERROR" // too many operations and too little numbers
             }
 
             if (element === "+") {
@@ -53,6 +53,8 @@ function parseCalculation(calculation) {
                 } else {
                     result = divide(num1, num2);
                 }
+            } else if (element = "%") {
+                result = num2 * 0.01
             }
             numbersArray.push(result)
         }

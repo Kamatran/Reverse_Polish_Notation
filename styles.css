@@ -14,6 +14,8 @@
     --background: #2C403E;
     --hover: #447771;
     --contrast: #402C2E;
+    --contrast-background: #CFB9BB;
+    --contrast-light: #E2D5D6;
     --clicked: 5px solid #4b8f87;
 }
 
@@ -36,7 +38,7 @@ body {
     width: 80%;
     max-width: 650px;
     max-height: 800px;
-    margin: auto;
+    margin: 50px auto 0 auto;
     background-color: var(--background);
     display: flex;
     justify-content: center;
@@ -89,7 +91,7 @@ body {
     align-items: center;
     font-size: clamp(1rem, 4vw, 2rem);
     color: white;
-    font-family: "Black Ops One";
+    font-family: "Black Ops One", sans-serif;
     background-color: var(--number-color);
 }
 
@@ -98,7 +100,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: clamp(1rem, 4vw, 2rem);
-    font-family: "Black Ops One";
+    font-family: "Black Ops One", sans-serif;
     border-radius: 50px;
     /*
     width: 130px;
@@ -171,22 +173,127 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(122, 153, 107, 0.7);
+    background-color: rgba(29, 33, 27, 0.7);
     z-index: 100;
+    overflow-y: auto;
 }
 
 #instruction-value {
     position: relative;
-    width: 80vw;
-    height: 80vh;
-    border: 2px solid red;
+    width: 90vw;
+    height: auto;
+    box-shadow: inset 0 0 10px 5px rgba(29, 33, 27, 0.7);
     margin: auto;
+    padding: 40px;
+    background-color: var(--contrast-background);
+    color: var(--contrast)
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+h3:first-of-type {
+    margin-top: 0;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+p:has(+ .example) {
+    text-align: center;
+    text-shadow: 2px 2px 10px #2C403E;
+}
+
+.example:first-of-type + p {
+    margin-bottom: 20px;
+}
+
+a {
+    font-weight: bold;
+    color: var(--hover)
+}
+
+.strong {
+    font-weight: bold;
+}
+
+
+ul {
+    list-style-type: none;
+    list-style-position: inside;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 40px;
+    text-align: left;
+    margin: 0 30px;
+    box-shadow: inset 0 0 10px 5px var(--contrast-background);
+    background-color: var(--contrast-light);
+    border-radius: 40px;
+    transition: transform 1s;
+}
+
+ul:hover {
+    transform: scale(1.1);
+}
+
+li::before {
+    content: "\0261B";
+    font-size: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#instruction-value > p:first-of-type, #instruction-value > p:nth-of-type(2) {
+    background-color: var(--contrast-background);
+    padding: 20px 30px;
+    border-radius: 50px;
+    text-align: justify;
+    box-shadow: inset -5px -5px 10px var(--contrast), inset 5px 5px 10px var(--contrast-light)
+}
+
+.example {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 30px 0;
+}
+
+.classic {
+    background-color: #a08a8a;
+}
+
+.classic, .solution, .arrow{
+    display: flex;
+    width: 180px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Black Ops One", sans-serif;
+}
+
+.classic, .solution {
+    border: 4px double var(--contrast);
+}
+
+.solution {
+    background-color: #9fd9b3;
+}
+
+
+.arrow {
+    font-size: 2.5rem;
 }
 
 #leave-instruction {
     position: absolute;
     color: red;
-    border: 2px solid var(--contrast);
     top: 20px;
     right: 20px;
     font-size: 2rem;
@@ -195,14 +302,15 @@ body {
 
 #show-instruction {
     position: absolute;
+    top: 10px;
+    left: 20px;
     font-size: 2rem;
-    top: 30px;
-    left: 30px;
     padding: 7px 10px;
     background-color: var(--contrast);
     color: white;
     border-radius: 50px;
     border: 2px solid white;
+
     animation-name: rotating;
     animation-duration: 5s;
     animation-timing-function: linear;

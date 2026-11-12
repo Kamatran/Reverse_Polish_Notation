@@ -12,8 +12,42 @@
             <button id="show-instruction">Instruction</button>
             <div id="instruction-container">
                 <div id="instruction-value">
-                    <h2> Hello</h2>
-                    <p>This is user manual for calculator!</p>
+                    <h2>Reverse Polish Notation Calculator Instruction</h2>
+                    <h3>Introduction</h3>
+                    <p>Reverse Polish Notation (RPN) is a method for representing mathematical expresions in which the operator symbol is placed after the operands being operated on.
+                        Strong side of this method is the fact, that it eliminates the need to use parentheses. User is responsible for correctly typing in calculation. Using this type of calculator is simple, but requires some understanding and practice. This instruction aims to explain how to use Reverse Polish Notation Calculator. For more information go to <a target="_blank" href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">this website</a>.
+                    </p>
+                    <h3>The idea</h3>
+                    <p>While using this calculator, you won't be using parentesies. Instead, Reverse Polish Notation introduces spaces as number separator. <span class="strong">You should put space after every seprate number. Putting space after operand is not nessecery but not wrong.</span>
+                    The main idea of RPN is that operation is always between two numbers and this calculator assumes that. Next important thing is operand placement. Operand goes always <span class="strong">after</span> numbers, on which operation is performed. Please see examples below to visualize calculator usage.</p>
+                    <h3>Examples</h3>
+                    <p>Simple addition of two numbers:</p>
+                    <div class="example">
+                        <p class="classic">5 + 5 + 3</p>
+                        <span class="arrow">&rarr;</span>
+                        <p class="solution">5 5 3 ++</p>
+                    </div>
+                    <p>The rest of the operation adequately.</p>
+
+                    <p>Priority of operations:</p>
+                    <div class="example">
+                        <p class="classic"> 10 - 5 * 2</p>
+                        <span class="arrow">&rarr;</span>
+                        <p class="solution">10 5 2 *-</p>
+                    </div>
+
+                    <p>Using parenthesies:</p>
+                    <div class="example">
+                        <p class="classic">100 - (25 + 5) / 6</p>
+                        <span class="arrow">&rarr;</span>
+                        <p class="solution">100 25 5 + 6 /-</p>
+                    </div>
+                    <h3>Summary</h3>
+                    <ul>
+                        <li>There are no parenthesies, instead RPN introduces spaces as separators,</li>
+                        <li>Operations are performed between two numbers (except percent sign),</li>
+                        <li>Operand always goes after numbers on which operation is performed.</li>
+                    </ul>
                     <div id="leave-instruction">X</div>
                 </div>
             </div>
